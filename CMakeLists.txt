@@ -35,6 +35,10 @@ endif()
 
 target_include_directories(${PROJECT_NAME} PRIVATE src)
 
+# Pass some project information into the source code
+configure_file(config.h.in config.h)
+target_include_directories(${PROJECT_NAME} PRIVATE ${CMAKE_CURRENT_BINARY_DIR})
+
 add_subdirectory(engine)
 target_link_libraries(${PROJECT_NAME} PRIVATE engine)
 target_include_directories(${PROJECT_NAME} PRIVATE engine/include)

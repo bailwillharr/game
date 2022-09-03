@@ -1,4 +1,4 @@
-#include "game/terrain.hpp"
+#include "terrain.hpp"
 
 #include "resources/mesh.hpp"
 

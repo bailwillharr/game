@@ -1,4 +1,4 @@
-#include "game/camera_controller.hpp"
+#include "camera_controller.hpp"
 
 #include "object.hpp"
 
