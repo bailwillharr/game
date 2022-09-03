@@ -10,14 +10,14 @@ add_executable(${PROJECT_NAME}
 
 	src/main.cpp
 
-	src/game/game.cpp
-	src/game/game.hpp
-	src/game/meshgen.cpp
-	src/game/meshgen.hpp
-	src/game/terrain.cpp
-	src/game/terrain.hpp
-	src/game/camera_controller.cpp
-	src/game/camera_controller.hpp
+	src/game.cpp
+	src/game.hpp
+	src/meshgen.cpp
+	src/meshgen.hpp
+	src/terrain.cpp
+	src/terrain.hpp
+	src/camera_controller.cpp
+	src/camera_controller.hpp
 	
  )
 

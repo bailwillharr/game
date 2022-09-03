@@ -282,7 +282,7 @@ static void addObjects(SceneRoot& mainScene)
 
 		void setText()
 		{
-			text->m_text = "DETAIL: " + std::to_string(detail) + " STEP: " + std::to_string(step);
+			text->m_text = "FORTNITE: " + std::to_string(detail) + " STEP: " + std::to_string(step);
 		}
 	};
 

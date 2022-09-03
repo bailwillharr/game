@@ -6,7 +6,7 @@
 #include <filesystem>
 #include <exception>
 
-#include "game/game.hpp"
+#include "game.hpp"
 
 #include <window.hpp>
 
