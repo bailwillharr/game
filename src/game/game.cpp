@@ -234,6 +234,7 @@ static void addObjects(SceneRoot& mainScene)
 			r = parent->getComponent<Renderer>();
 			text = parent->getParent()->getChild("detail_text")->getComponent<UI>();
 			setText();
+			lastAction = win.getNanos();
 		}
 
 		void onUpdate(glm::mat4) override
@@ -247,20 +248,29 @@ static void addObjects(SceneRoot& mainScene)
 				if (detail < 3) detail = 3;
 				regenSphere();
 				setText();
-			} else if (win.getKeyPress(inputs::Key::N0)) {
-				step += 1;
-				setText();
+			}
 
-			} else if (win.getKeyPress(inputs::Key::N9)) {
-				step -= 1;
-				if (step < 1) step = 1;
-				setText();
+			constexpr float DELAY = 0.1f;
+			const uint64_t now = win.getNanos();
+			if (now - lastAction > DELAY * BILLION) {
+				lastAction = now;
+				if (win.getKey(inputs::Key::N0)) {
+					step += 1;
+					setText();
+				}
+				else if (win.getKey(inputs::Key::N9)) {
+					step -= 1;
+					if (step < 1) step = 1;
+					setText();
+				}
 			}
 
 		}
 	private:
 		int detail = 10;
 		int step = 1;
+
+		uint64_t lastAction;
 
 		Renderer* r;
 		UI* text;
