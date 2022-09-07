@@ -1,0 +1,64 @@
+[2022-09-06 19:54:37.042] [sdltest] [info] [engine.hpp:41] Created log with path: game.log
+[2022-09-06 19:54:37.042] [sdltest] [info] [main.cpp:17] game v0.1.0
+[2022-09-06 19:54:37.242] [sdltest] [trace] [resource.cpp:8] Creating font resource: LiberationMono-Regular.ttf
+[2022-09-06 19:54:37.258] [sdltest] [trace] [resource.cpp:8] Creating shader resource: font.glsl
+[2022-09-06 19:54:37.271] [sdltest] [debug] [shader.cpp:89] For shader font.glsl:
+[2022-09-06 19:54:37.271] [sdltest] [debug] [shader.cpp:100] 	uniform windowSize
+[2022-09-06 19:54:37.271] [sdltest] [debug] [shader.cpp:100] 	uniform textScaling
+[2022-09-06 19:54:37.271] [sdltest] [debug] [shader.cpp:100] 	uniform modelMat
+[2022-09-06 19:54:37.271] [sdltest] [debug] [shader.cpp:100] 	uniform textColor
+[2022-09-06 19:54:37.271] [sdltest] [debug] [shader.cpp:100] 	uniform tex
+[2022-09-06 19:54:37.271] [sdltest] [debug] [shader.cpp:111] 	attrib v_Position
+[2022-09-06 19:54:37.271] [sdltest] [debug] [shader.cpp:111] 	attrib v_UV
+[2022-09-06 19:54:37.271] [sdltest] [trace] [resource.cpp:8] Creating shader resource: basic.glsl
+[2022-09-06 19:54:37.272] [sdltest] [debug] [shader.cpp:89] For shader basic.glsl:
+[2022-09-06 19:54:37.272] [sdltest] [debug] [shader.cpp:100] 	uniform modelMat
+[2022-09-06 19:54:37.272] [sdltest] [debug] [shader.cpp:100] 	uniform viewMat
+[2022-09-06 19:54:37.272] [sdltest] [debug] [shader.cpp:100] 	uniform projMat
+[2022-09-06 19:54:37.272] [sdltest] [debug] [shader.cpp:100] 	uniform lightPos
+[2022-09-06 19:54:37.272] [sdltest] [debug] [shader.cpp:100] 	uniform ambientStrength
+[2022-09-06 19:54:37.272] [sdltest] [debug] [shader.cpp:100] 	uniform ambientColor
+[2022-09-06 19:54:37.272] [sdltest] [debug] [shader.cpp:100] 	uniform lightColor
+[2022-09-06 19:54:37.272] [sdltest] [debug] [shader.cpp:100] 	uniform emission
+[2022-09-06 19:54:37.272] [sdltest] [debug] [shader.cpp:100] 	uniform baseColor
+[2022-09-06 19:54:37.272] [sdltest] [debug] [shader.cpp:100] 	uniform tex
+[2022-09-06 19:54:37.272] [sdltest] [debug] [shader.cpp:111] 	attrib v_Position
+[2022-09-06 19:54:37.272] [sdltest] [debug] [shader.cpp:111] 	attrib v_Norm
+[2022-09-06 19:54:37.272] [sdltest] [debug] [shader.cpp:111] 	attrib v_UV
+[2022-09-06 19:54:37.272] [sdltest] [trace] [resource.cpp:8] Creating texture resource: missing.png
+[2022-09-06 19:54:37.273] [sdltest] [debug] [texture.cpp:112] loaded texture missing.png width: 2 height: 2 size: 12
+[2022-09-06 19:54:37.274] [sdltest] [trace] [resource.cpp:8] Creating texture resource: cobble_stone.png
+[2022-09-06 19:54:37.280] [sdltest] [debug] [texture.cpp:112] loaded texture cobble_stone.png width: 122 height: 122 size: 44652
+[2022-09-06 19:54:37.282] [sdltest] [trace] [resource.cpp:8] Creating texture resource: gun.png
+[2022-09-06 19:54:38.336] [sdltest] [debug] [texture.cpp:112] loaded texture gun.png width: 4096 height: 4096 size: 50331648
+[2022-09-06 19:54:38.337] [sdltest] [trace] [resource.cpp:8] Creating texture resource: stone_bricks.png
+[2022-09-06 19:54:38.338] [sdltest] [debug] [texture.cpp:112] loaded texture stone_bricks.png width: 64 height: 64 size: 16384
+[2022-09-06 19:54:38.340] [sdltest] [trace] [resource.cpp:8] Creating texture resource: white.png
+[2022-09-06 19:54:38.341] [sdltest] [debug] [texture.cpp:112] loaded texture white.png width: 64 height: 64 size: 12288
+[2022-09-06 19:54:38.341] [sdltest] [trace] [resource.cpp:8] Creating texture resource: MonkeTexture.png
+[2022-09-06 19:54:38.389] [sdltest] [debug] [texture.cpp:112] loaded texture MonkeTexture.png width: 1024 height: 1024 size: 4194304
+[2022-09-06 19:54:38.389] [sdltest] [trace] [resource.cpp:8] Creating texture resource: grass_block_top.png
+[2022-09-06 19:54:38.390] [sdltest] [debug] [texture.cpp:112] loaded texture grass_block_top.png width: 64 height: 64 size: 16384
+[2022-09-06 19:54:38.390] [sdltest] [info] [object.cpp:86] root
+[2022-09-06 19:54:38.390] [sdltest] [info] [object.cpp:86] \_______cam
+[2022-09-06 19:54:38.390] [sdltest] [info] [object.cpp:86]         \_______gun
+[2022-09-06 19:54:38.390] [sdltest] [info] [object.cpp:86] \_______hud
+[2022-09-06 19:54:38.390] [sdltest] [info] [object.cpp:86] \_______floor
+[2022-09-06 19:54:38.390] [sdltest] [info] [object.cpp:86] \_______boundary
+[2022-09-06 19:54:38.390] [sdltest] [info] [object.cpp:86] \_______chunk
+[2022-09-06 19:54:38.390] [sdltest] [info] [object.cpp:86] \_______monke
+[2022-09-06 19:54:38.390] [sdltest] [info] [object.cpp:86] \_______earth
+[2022-09-06 19:54:38.390] [sdltest] [info] [object.cpp:86] \_______detail_text
+[2022-09-06 19:54:38.390] [sdltest] [info] [object.cpp:86] \_______cuboid
+[2022-09-06 19:54:38.390] [sdltest] [info] [object.cpp:86] \_______sun_pivot
+[2022-09-06 19:54:38.390] [sdltest] [info] [object.cpp:86]         \_______sun
+[2022-09-06 19:55:18.319] [sdltest] [trace] [resource.cpp:14] Destroyed texture resource: gun.png
+[2022-09-06 19:55:18.319] [sdltest] [trace] [resource.cpp:14] Destroyed texture resource: stone_bricks.png
+[2022-09-06 19:55:18.319] [sdltest] [trace] [resource.cpp:14] Destroyed texture resource: MonkeTexture.png
+[2022-09-06 19:55:18.319] [sdltest] [trace] [resource.cpp:14] Destroyed texture resource: grass_block_top.png
+[2022-09-06 19:55:18.319] [sdltest] [trace] [resource.cpp:14] Destroyed texture resource: cobble_stone.png
+[2022-09-06 19:55:18.319] [sdltest] [trace] [resource.cpp:14] Destroyed texture resource: white.png
+[2022-09-06 19:55:18.320] [sdltest] [trace] [resource.cpp:14] Destroyed shader resource: font.glsl
+[2022-09-06 19:55:18.320] [sdltest] [trace] [resource.cpp:14] Destroyed font resource: LiberationMono-Regular.ttf
+[2022-09-06 19:55:18.320] [sdltest] [trace] [resource.cpp:14] Destroyed shader resource: basic.glsl
+[2022-09-06 19:55:18.320] [sdltest] [trace] [resource.cpp:14] Destroyed texture resource: missing.png

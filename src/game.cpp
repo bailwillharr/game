@@ -156,7 +156,7 @@ static void addObjects(SceneRoot& mainScene)
 		{
 			
 
-			constexpr float DELAY = 0.5f;
+			constexpr float DELAY = 0.1f;
 			const uint64_t now = win.getNanos();
 			if (now - lastAction > DELAY * BILLION) {
 				lastAction = now;
@@ -197,7 +197,10 @@ static void addObjects(SceneRoot& mainScene)
 	// BOX
 	
 	auto boundary = mainScene.createChild("boundary");
-	boundary->createComponent<Renderer>()->m_mesh = genSphereMesh(100.0f, 100, true);
+	auto boundaryRen = boundary->createComponent<Renderer>();
+	boundaryRen->m_mesh = genSphereMesh(100.0f, 32, true);
+	boundaryRen->setTexture("textures/white.png");
+	boundaryRen->m_color = {0.8f, 0.2f, 0.03f};
 
 
 	// WORLD GEN
