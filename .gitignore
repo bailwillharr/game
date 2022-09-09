@@ -10,4 +10,4 @@ MinSizeRel/
 CMakeSettings.json
 compile_commands.json
 runme
-sdltest.log
+game.log
