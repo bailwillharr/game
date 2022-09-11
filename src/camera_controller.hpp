@@ -15,7 +15,6 @@ public:
 	float m_cameraSensitivity = 0.007f;
 
 private:
-	components::Transform* tcomp;
 	float m_yaw = 0.0f;
 	float m_pitch = 0.0f;
 

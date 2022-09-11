@@ -1,8 +1,6 @@
-#include "game/camera_controller.hpp"
+#include "camera_controller.hpp"
 
 #include "object.hpp"
-
-#include "components/transform.hpp"
 
 #include "window.hpp"
 #include "input.hpp"
@@ -17,8 +15,7 @@
 CameraController::CameraController(Object* parent) :
 	CustomComponent(parent)
 {
-	tcomp = this->parent.getComponent<components::Transform>();
-	standingHeight = tcomp->position.y;
+	standingHeight = parent->transform.position.y;
 }
 
 void CameraController::onUpdate(glm::mat4 t)
@@ -46,11 +43,11 @@ void CameraController::onUpdate(glm::mat4 t)
 
 	if (isJumping) {
 		dy -= G * dt;
-		tcomp->position.y += dy * dt;
-		if (tcomp->position.y < standingHeight) {
+		parent.transform.position.y += dy * dt;
+		if (parent.transform.position.y < standingHeight) {
 			isJumping = false;
 			dy = 0.0f;
-			tcomp->position.y = standingHeight;
+			parent.transform.position.y = standingHeight;
 		}
 	}
 
@@ -82,8 +79,8 @@ void CameraController::onUpdate(glm::mat4 t)
 	// update position relative to camera direction in xz plane
 	const glm::vec3 d2xRotated = glm::rotateY(glm::vec3{ dx, 0.0f, 0.0f }, m_yaw);
 	const glm::vec3 d2zRotated = glm::rotateY(glm::vec3{ 0.0f, 0.0f, dz }, m_yaw);
-	tcomp->position += (d2xRotated + d2zRotated) * dt;
-	tcomp->position.y += dy * dt;
+	parent.transform.position += (d2xRotated + d2zRotated) * dt;
+	parent.transform.position.y += dy * dt;
 
 	// pitch quaternion
 	const float halfPitch = m_pitch / 2.0f;
@@ -102,13 +99,13 @@ void CameraController::onUpdate(glm::mat4 t)
 	yawQuat.w = glm::cos(halfYaw);
 
 	// update rotation
-	tcomp->rotation = yawQuat * pitchQuat;
+	parent.transform.rotation = yawQuat * pitchQuat;
 
 	if (win.getKeyPress(inputs::Key::P)) {
 		std::string pos_string{
-			 "x: " + std::to_string(tcomp->position.x) +
-			" y: " + std::to_string(tcomp->position.y) +
-			" z: " + std::to_string(tcomp->position.z)
+			 "x: " + std::to_string(parent.transform.position.x) +
+			" y: " + std::to_string(parent.transform.position.y) +
+			" z: " + std::to_string(parent.transform.position.z)
 		};
 #ifdef NDEBUG
 		win.infoBox("POSITION", pos_string);
