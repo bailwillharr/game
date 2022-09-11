@@ -6,8 +6,8 @@ project(game LANGUAGES CXX
 	VERSION "0.1.0"
 )
 
-add_executable(${PROJECT_NAME}
-
+set(GAME_SOURCES
+	
 	src/main.cpp
 
 	src/game.cpp
@@ -19,7 +19,13 @@ add_executable(${PROJECT_NAME}
 	src/camera_controller.cpp
 	src/camera_controller.hpp
 	
- )
+)
+
+if (WIN32)
+	add_executable(${PROJECT_NAME} WIN32 ${GAME_SOURCES} "game.rc")
+else()
+	add_executable(${PROJECT_NAME} ${GAME_SOURCES})
+endif()
 
 # compiling options:
 
@@ -44,9 +50,10 @@ target_link_libraries(${PROJECT_NAME} PRIVATE engine)
 target_include_directories(${PROJECT_NAME} PRIVATE engine/include)
 
 # linking options:
-set_property(TARGET ${PROJECT_NAME} PROPERTY WIN32_EXECUTABLE TRUE)
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-	set_property(TARGET ${PROJECT_NAME} PROPERTY WIN32_EXECUTABLE FALSE)
+if(WIN32)
+	if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+		set_property(TARGET ${PROJECT_NAME} PROPERTY WIN32_EXECUTABLE FALSE)
+	endif()
 endif()
 
 add_custom_command(
