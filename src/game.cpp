@@ -116,7 +116,7 @@ static void addObjects(SceneRoot& mainScene)
 	auto camCamera = cam->createComponent<Camera>();
 	camCamera->usePerspective(70.0f);
 	cam->createComponent<CameraController>();
-	camCamera->m_noClear = true;
+	camCamera->m_noClear = false;
 	camCamera->clearColor = { 0.5f, 0.5f, 0.5f, 1.f };
 	cam->createComponent<Renderer>()->m_mesh = genSphereMesh(0.2f, 20);
 	cam->getComponent<Renderer>()->setTexture("textures/cobble_stone.png");
@@ -135,13 +135,15 @@ static void addObjects(SceneRoot& mainScene)
 
 	// USER INTERFACE
 
-	class FPSCount : public CustomComponent {
+	class HUDLogic : public CustomComponent {
 	public:
 		UI* ui;
-
 		uint64_t lastAction;
 
-		FPSCount(Object* parent) : CustomComponent(parent)
+		UI* hudPosText;
+		Object* playerCam = nullptr;
+
+		HUDLogic(Object* parent) : CustomComponent(parent)
 		{
 			ui = parent->getComponent<UI>();
 			parent->transform.position.x = 1.0f;
@@ -150,32 +152,48 @@ static void addObjects(SceneRoot& mainScene)
 			ui->m_alignment = components::UI::Alignment::RIGHT;
 
 			lastAction = win.getNanos();
+
+			playerCam = parent->getParent()->getChild("cam");
+
+			hudPosText = parent->getParent()->getChild("position_text")->getComponent<UI>();
+			hudPosText->m_alignment = components::UI::Alignment::LEFT;
 		}
 
 		void onUpdate(glm::mat4) override
 		{
 			
 
-			constexpr float DELAY = 0.1f;
+			constexpr float DELAY = 0.02f;
 			const uint64_t now = win.getNanos();
 			if (now - lastAction > DELAY * BILLION) {
 				lastAction = now;
-				win.setTitle(std::to_string(win.getFPS()));
+				//win.setTitle(std::to_string(win.getFPS()));
 				ui->m_text = "FPS: " + std::to_string(win.getFPS());
 				ui->m_text += " " + std::to_string(win.dt() * 1000.0f) + " ms";
+
+				const std::string positionText =
+					"x: " + std::to_string(playerCam->transform.position.x) +
+					" y: " + std::to_string(playerCam->transform.position.y) +
+					" z: " + std::to_string(playerCam->transform.position.z);
+
+				hudPosText->m_text = positionText;
 			}
 		}
 	};
 
 	auto hud = mainScene.createChild("hud");
 	hud->createComponent<UI>();
-	hud->createComponent<FPSCount>();
+	auto hudPosText = mainScene.createChild("position_text");
+	auto hudPosTextUI = hudPosText->createComponent<UI>();
+	hudPosText->transform.position = { -1.0f, 0.95f, 0.0f };
+	hudPosText->transform.scale = { 0.5f, 0.5f, 1.0f };
+	hud->createComponent<HUDLogic>();
 
 
 
 	// FLOOR
 	
-	constexpr float GRASS_DENSITY = 128.0f;
+	constexpr float GRASS_DENSITY = 128.0f * 20.0f;
 	auto floor = mainScene.createChild("floor");
 	auto floorRenderer = floor->createComponent<Renderer>();
 	floor->transform.position = glm::vec3{ 0.0f, 0.0f, 0.0f };
@@ -190,7 +208,7 @@ static void addObjects(SceneRoot& mainScene)
 		{ { -16.0f, 0.0f,  16.0f }, { 0.0f, 1.0f, 0.0f }, { 0.0f,  GRASS_DENSITY } },	
 		
 	});
-	floor->transform.scale = { 4.0f, 4.0f, 4.0f };
+	floor->transform.scale = { 100.0f, 1.0f, 100.0f };
 
 
 

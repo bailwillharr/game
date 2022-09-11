@@ -59,7 +59,8 @@ void CameraController::onUpdate(glm::mat4 t)
 
 	// in metres per second
 	//constexpr float SPEED = 1.5f;
-	const float SPEED = walk_speed;
+	float SPEED = walk_speed;
+	if (win.getKey(inputs::Key::LSHIFT)) SPEED *= 10.0f;
 
 	const float dx = inp.getAxis("movex") * SPEED;
 	const float dz = (-inp.getAxis("movey")) * SPEED;
