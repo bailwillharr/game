@@ -1,13 +1,11 @@
 #include "config.h"
 
-#include <engine.hpp>
+#include <logger.hpp>
 
 #include "game.hpp"
 
 #include <exception>
 #include <window.hpp>
-
-#include <gfx_device.hpp>
 
 int main(int argc, char *argv[])
 {

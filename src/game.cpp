@@ -15,6 +15,8 @@
 #include "components/mesh_renderer.hpp"
 #include "components/camera.hpp"
 
+#include "gfx_device.hpp"
+
 using namespace components;
 
 class Spin : public CustomComponent {
@@ -47,6 +49,8 @@ void playGame()
 	Window win(PROJECT_NAME);
 	Input input(win); /* Input Manager */
 	ResourceManager resMan;
+
+	engine::gfx::Device dev(engine::AppInfo{PROJECT_NAME, PROJECT_VERSION}, win);
 
 	SceneRoot menu({ &win, &input, &resMan });
 	SceneRoot mainScene({ &win, &input, &resMan });
