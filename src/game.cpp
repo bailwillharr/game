@@ -47,22 +47,21 @@ void playGame()
 {
 
 	Window win(PROJECT_NAME);
-	Input input(win); /* Input Manager */
-	ResourceManager resMan;
-
 	engine::gfx::Device dev(engine::AppInfo{PROJECT_NAME, PROJECT_VERSION}, win);
+
+/*
+	Input input(win); // Input Manager
+	ResourceManager resMan;
 
 	SceneRoot menu({ &win, &input, &resMan });
 	SceneRoot mainScene({ &win, &input, &resMan });
-
 	addInputs(input);
-
 	createMenu(menu);
-
 	addObjects(mainScene);
 
 	gameLoop(win, input, resMan, menu, mainScene);
-	
+*/
+
 }
 
 static void createMenu(SceneRoot& menu)
@@ -379,7 +378,7 @@ static void addInputs(Input& input)
 static void gameLoop(Window& win, Input& input, ResourceManager& resMan, SceneRoot& menu, SceneRoot& mainScene)
 {
 
-	win.setVSync(true);
+//	win.setVSync(true);
 	win.setRelativeMouseMode(false);
 
 	uint64_t lastTick = win.getNanos();
@@ -419,9 +418,10 @@ static void gameLoop(Window& win, Input& input, ResourceManager& resMan, SceneRo
 		if (win.getKeyPress(inputs::Key::TAB)) {
 			win.infoBox("RESOURCES", resMan.getResourcesListString()->c_str());
 		}
-		if (win.getKeyPress(inputs::Key::V)) {
+/*		if (win.getKeyPress(inputs::Key::V)) {
 			win.setVSync(!win.getVSync());
 		}
+*/
 
 
 
@@ -461,9 +461,6 @@ static void gameLoop(Window& win, Input& input, ResourceManager& resMan, SceneRo
 
 		activeScene->updateStuff();
 		
-		// swap
-		win.swapBuffers();
-
 		// events
 		win.getInputAndEvents();
 
