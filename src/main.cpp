@@ -18,12 +18,16 @@ int main(int argc, char *argv[])
 		playGame();
 	}
 	catch (const std::exception& e) {
+
+		CRITICAL("{}", e.what());
+
 #ifdef NDEBUG
 		Window::errorBox(e.what());
 #else
 		fputs(e.what(), stderr);
 		fputc('\n', stderr);
 #endif
+
 		return EXIT_FAILURE;
 	}
 
