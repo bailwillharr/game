@@ -24,7 +24,7 @@ void playGame()
 {
 
 	Window win(PROJECT_NAME);
-	engine::gfx::Device dev(engine::AppInfo{PROJECT_NAME, PROJECT_VERSION}, win.m_handle);
+	engine::gfx::GFXDevice dev(engine::AppInfo{PROJECT_NAME, PROJECT_VERSION}, win.m_handle);
 
 	Input input(win); // Input Manager
 	ResourceManager resMan;
