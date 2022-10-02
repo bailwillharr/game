@@ -17,24 +17,23 @@
 
 #include "gfx_device.hpp"
 
-static void addInputs(Input& input);
-static void gameLoop(Window& win, Input& input, ResourceManager& resMan);
+static void addInputs(engine::Input& input);
+static void gameLoop(engine::Window& win, engine::Input& input, ResourceManager& resMan);
 
 void playGame()
 {
 
-	Window win(PROJECT_NAME);
-	engine::gfx::GFXDevice dev(engine::AppInfo{PROJECT_NAME, PROJECT_VERSION}, win.m_handle);
+	engine::Window win(PROJECT_NAME);
+	engine::GFXDevice dev(engine::AppInfo{PROJECT_NAME, PROJECT_VERSION}, win.m_handle);
 
-	Input input(win); // Input Manager
+	engine::Input input(win); // Input Manager
 	ResourceManager resMan;
-
 
 	gameLoop(win, input, resMan);
 
 }
 
-static void addInputs(Input& input)
+static void addInputs(engine::Input& input)
 {
 	// game buttons
 	input.addInputButton("fire", inputs::MouseButton::M_LEFT);
@@ -49,7 +48,7 @@ static void addInputs(Input& input)
 	input.addInputAxis("looky", inputs::MouseAxis::Y);
 }
 
-static void gameLoop(Window& win, Input& input, ResourceManager& resMan)
+static void gameLoop(engine::Window& win, engine::Input& input, ResourceManager& resMan)
 {
 
 	win.setRelativeMouseMode(false);
@@ -86,7 +85,7 @@ static void gameLoop(Window& win, Input& input, ResourceManager& resMan)
 		if (win.getKeyPress(inputs::Key::Q)) {
 			bool captured = win.mouseCaptured();
 			win.setRelativeMouseMode(!captured);
-			input.setDeviceActive(InputDevice::MOUSE, !captured);
+			input.setDeviceActive(engine::InputDevice::MOUSE, !captured);
 		}
 		if (win.getKeyPress(inputs::Key::TAB)) {
 			win.infoBox("RESOURCES", resMan.getResourcesListString()->c_str());

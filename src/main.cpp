@@ -5,7 +5,7 @@
 #include "game.hpp"
 
 #include <exception>
-#include <window.hpp>
+#include "window.hpp"
 
 int main(int argc, char *argv[])
 {
@@ -22,7 +22,7 @@ int main(int argc, char *argv[])
 		CRITICAL("{}", e.what());
 
 #ifdef NDEBUG
-		Window::errorBox(e.what());
+		engine::Window::errorBox(e.what());
 #else
 		fputs(e.what(), stderr);
 		fputc('\n', stderr);
