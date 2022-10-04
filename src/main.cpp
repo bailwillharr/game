@@ -1,11 +1,10 @@
 #include "config.h"
-
-#include <logger.hpp>
-
 #include "game.hpp"
 
-#include <exception>
+#include "logger.hpp"
 #include "window.hpp"
+
+#include <exception>
 
 int main(int argc, char *argv[])
 {
