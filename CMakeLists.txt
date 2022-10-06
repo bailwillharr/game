@@ -35,7 +35,7 @@ set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD 20)
 set_property(TARGET ${PROJECT_NAME} PROPERTY CXX_STANDARD_REQUIRED ON)
 
 if (MSVC)
-	target_compile_options(${PROJECT_NAME} PRIVATE /W4)
+	target_compile_options(${PROJECT_NAME} PRIVATE /W3)
 	target_compile_options(${PROJECT_NAME} PRIVATE /MP)
 endif()
 

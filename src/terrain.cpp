@@ -2,8 +2,10 @@
 
 #include "resources/mesh.hpp"
 
-std::unique_ptr<resources::Mesh> getChunkMesh(int x, int y)
+std::unique_ptr<engine::resources::Mesh> getChunkMesh(int x, int y)
 {
+	(void)x;
+	(void)y;
 
 	std::vector<Vertex> vertices{
 		{{0.0f, 0.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f}},
@@ -11,5 +13,5 @@ std::unique_ptr<resources::Mesh> getChunkMesh(int x, int y)
 		{{0.0f, 1.0f, 0.0f}, {0.0f, 0.0f, 0.0f}, {0.0f, 0.0f}}
 	};
 
-	return std::make_unique<resources::Mesh>(vertices);
+	return std::make_unique<engine::resources::Mesh>(vertices);
 }

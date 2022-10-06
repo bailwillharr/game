@@ -6,10 +6,10 @@ namespace components {
 	class Transform;
 }
 
-class CameraController : public components::CustomComponent {
+class CameraController : public engine::components::CustomComponent {
 
 public:
-	CameraController(Object* parent);
+	CameraController(engine::Object* parent);
 	void onUpdate(glm::mat4 t) override;
 
 	float m_cameraSensitivity = 0.007f;
