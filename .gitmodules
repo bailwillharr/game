@@ -1,21 +1,3 @@
-[submodule "libraries/SDL"]
-	path = libraries/SDL
-	url = https://github.com/libsdl-org/SDL
-[submodule "libraries/glad"]
-	path = libraries/glad
-	url = https://github.com/Dav1dde/glad
-[submodule "libraries/glm"]
-	path = libraries/glm
-	url = https://github.com/g-truc/glm
-[submodule "libraries/freetype"]
-	path = libraries/freetype
-	url = https://github.com/freetype/freetype
-[submodule "libraries/stb"]
-	path = libraries/stb
-	url = https://github.com/nothings/stb
-[submodule "libraries/spdlog"]
-	path = libraries/spdlog
-	url = https://github.com/gabime/spdlog
 [submodule "engine"]
 	path = engine
 	url = git@github.com:bailwillharr/engine
