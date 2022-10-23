@@ -49,13 +49,6 @@ add_subdirectory(engine)
 target_link_libraries(${PROJECT_NAME} PRIVATE engine)
 target_include_directories(${PROJECT_NAME} PRIVATE engine/include)
 
-# linking options:
-if(WIN32)
-	if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-		set_property(TARGET ${PROJECT_NAME} PROPERTY WIN32_EXECUTABLE FALSE)
-	endif()
-endif()
-
 add_custom_command(
 	TARGET ${PROJECT_NAME} POST_BUILD
 	COMMAND ${CMAKE_COMMAND} -E copy_directory
