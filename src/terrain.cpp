@@ -1,3 +1,5 @@
+#if 0
+
 #include "terrain.hpp"
 
 #include "resources/mesh.hpp"
@@ -15,3 +17,5 @@ std::unique_ptr<engine::resources::Mesh> getChunkMesh(int x, int y)
 
 	return std::make_unique<engine::resources::Mesh>(vertices);
 }
+
+#endif
