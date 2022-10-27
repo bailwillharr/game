@@ -1,8 +1,7 @@
-#if 0
-
 #include "meshgen.hpp"
 
 #include <glm/gtc/constants.hpp>
+#include <glm/ext.hpp>
 #include <glm/trigonometric.hpp>
 
 #include <iostream>
@@ -134,5 +133,3 @@ std::unique_ptr<engine::resources::Mesh> genCuboidMesh(float x, float y, float z
 	return std::make_unique<engine::resources::Mesh>(v, indices);
 
 }
-
-#endif
