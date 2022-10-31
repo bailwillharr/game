@@ -2,10 +2,6 @@
 
 #include "components/custom.hpp"
 
-namespace components {
-	class Transform;
-}
-
 class CameraController : public engine::components::CustomComponent {
 
 public:
