@@ -1,13 +1,14 @@
 #include "meshgen.hpp"
 
 #include <glm/gtc/constants.hpp>
+#include <glm/ext.hpp>
 #include <glm/trigonometric.hpp>
 
 #include <iostream>
 
 #include <thread>
 
-std::unique_ptr<resources::Mesh> genSphereMesh(float r, int detail, bool windInside)
+std::unique_ptr<engine::resources::Mesh> genSphereMesh(float r, int detail, bool windInside)
 {
 	using namespace glm;
 
@@ -81,10 +82,10 @@ std::unique_ptr<resources::Mesh> genSphereMesh(float r, int detail, bool windIns
 		}
 	}
 
-	return std::make_unique<resources::Mesh>(vertices);
+	return std::make_unique<engine::resources::Mesh>(vertices);
 }
 
-std::unique_ptr<resources::Mesh> genCuboidMesh(float x, float y, float z)
+std::unique_ptr<engine::resources::Mesh> genCuboidMesh(float x, float y, float z)
 {
 
 	// x goes ->
@@ -129,6 +130,6 @@ std::unique_ptr<resources::Mesh> genCuboidMesh(float x, float y, float z)
 		2, 3, 7, 6, 2, 7
 	};
 
-	return std::make_unique<resources::Mesh>(v, indices);
+	return std::make_unique<engine::resources::Mesh>(v, indices);
 
 }

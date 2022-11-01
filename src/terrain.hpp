@@ -2,8 +2,8 @@
 
 #include <memory>
 
-namespace resources {
+namespace engine::resources {
 	class Mesh;
 }
 
-std::unique_ptr<resources::Mesh> getChunkMesh(int x, int y);
+std::unique_ptr<engine::resources::Mesh> getChunkMesh(int x, int y);

@@ -12,7 +12,7 @@
 
 #include <log.hpp>
 
-CameraController::CameraController(Object* parent) :
+CameraController::CameraController(engine::Object* parent) :
 	CustomComponent(parent)
 {
 	standingHeight = parent->transform.position.y;
@@ -30,7 +30,7 @@ void CameraController::onUpdate(glm::mat4 t)
 	// jumping
 	constexpr float G = 9.8f;
 	constexpr float JUMPHEIGHT = 16.0f * 25.4f / 1000.0f; // 16 inches
-	constexpr float JUMPVEL = 2.82231110971133017648; //std::sqrt(2 * G * JUMPHEIGHT);
+	constexpr float JUMPVEL = (float)2.82231110971133017648; //std::sqrt(2 * G * JUMPHEIGHT);
 	//constexpr float JUMPDURATION = 0.5f;
 	//constexpr float JUMPVEL = G * JUMPDURATION / 2.0f;
 
@@ -51,7 +51,7 @@ void CameraController::onUpdate(glm::mat4 t)
 		}
 	}
 
-	if (win.getButton(inputs::MouseButton::M_LEFT)) {
+	if (win.getButton(engine::inputs::MouseButton::M_LEFT)) {
 		//standingHeight = tcomp->position.y;
 		dy += dt * thrust;
 		isJumping = true;
@@ -60,7 +60,7 @@ void CameraController::onUpdate(glm::mat4 t)
 	// in metres per second
 	//constexpr float SPEED = 1.5f;
 	float SPEED = walk_speed;
-	if (win.getKey(inputs::Key::LSHIFT)) SPEED *= 10.0f;
+	if (win.getKey(engine::inputs::Key::LSHIFT)) SPEED *= 10.0f;
 
 	const float dx = inp.getAxis("movex") * SPEED;
 	const float dz = (-inp.getAxis("movey")) * SPEED;
@@ -85,7 +85,7 @@ void CameraController::onUpdate(glm::mat4 t)
 
 	// pitch quaternion
 	const float halfPitch = m_pitch / 2.0f;
-	glm::quat pitchQuat;
+	glm::quat pitchQuat{};
 	pitchQuat.x = glm::sin(halfPitch);
 	pitchQuat.y = 0.0f;
 	pitchQuat.z = 0.0f;
@@ -93,7 +93,7 @@ void CameraController::onUpdate(glm::mat4 t)
 
 	// yaw quaternion
 	const float halfYaw = m_yaw / 2.0f;
-	glm::quat yawQuat;
+	glm::quat yawQuat{};
 	yawQuat.x = 0.0f;
 	yawQuat.y = glm::sin(halfYaw);
 	yawQuat.z = 0.0f;
@@ -102,7 +102,7 @@ void CameraController::onUpdate(glm::mat4 t)
 	// update rotation
 	parent.transform.rotation = yawQuat * pitchQuat;
 
-	if (win.getKeyPress(inputs::Key::P)) {
+	if (win.getKeyPress(engine::inputs::Key::P)) {
 		std::string pos_string{
 			 "x: " + std::to_string(parent.transform.position.x) +
 			" y: " + std::to_string(parent.transform.position.y) +

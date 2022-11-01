@@ -1,11 +1,10 @@
 #include "config.h"
-
-#include <logger.hpp>
-
 #include "game.hpp"
 
+#include "logger.hpp"
+#include "window.hpp"
+
 #include <exception>
-#include <window.hpp>
 
 int main(int argc, char *argv[])
 {
@@ -18,7 +17,16 @@ int main(int argc, char *argv[])
 		playGame();
 	}
 	catch (const std::exception& e) {
-		Window::errorBox(e.what());
+
+		CRITICAL("{}", e.what());
+
+#ifdef NDEBUG
+		engine::Window::errorBox(e.what());
+#else
+		fputs(e.what(), stderr);
+		fputc('\n', stderr);
+#endif
+
 		return EXIT_FAILURE;
 	}
 
