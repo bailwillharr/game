@@ -51,8 +51,6 @@ void playGame()
 	auto camCamera = cam->createComponent<engine::components::Camera>();
 	camCamera->usePerspective(70.0f);
 	cam->createComponent<CameraController>();
-	camCamera->m_noClear = false;
-	camCamera->clearColor = { 0.5f, 0.5f, 0.5f, 1.f };
 	cam->createComponent<engine::components::Renderer>()->m_mesh = genSphereMesh(0.2f, 20);
 	cam->getComponent<engine::components::Renderer>()->setTexture("textures/cobble_stone.png");
 
@@ -85,8 +83,9 @@ void playGame()
 	});
 	floor->transform.scale = { 100.0f, 1.0f, 100.0f };
 
-	app.scene()->createChild("cube")->createComponent<engine::components::Renderer>()->setMesh("meshes/cube.mesh");
-	app.scene()->getChild("cube")->transform.position = glm::vec3{ -5.0f, 1.0f, 0.0f };
+	auto cube = app.scene()->createChild("cube");
+	cube->createComponent<engine::components::Renderer>()->setMesh("meshes/cube.mesh");
+	cube->transform.position = glm::vec3{ -5.0f, 1.0f, 0.0f };
 	class Spin : public engine::components::CustomComponent {
 
 	public:
@@ -115,8 +114,6 @@ void playGame()
 
 
 	app.scene()->printTree();
-
-	TRACE("{}", gunRenderer->getID());
 
 	app.gameLoop();
 }

@@ -16,6 +16,7 @@ CameraController::CameraController(engine::Object* parent) :
 	CustomComponent(parent)
 {
 	standingHeight = parent->transform.position.y;
+	m_yaw = glm::half_pi<float>();
 }
 
 void CameraController::onUpdate(glm::mat4 t)
